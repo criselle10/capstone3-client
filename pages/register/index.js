@@ -64,7 +64,7 @@ export default function index(){
 						setMobileNo('');
 						setPassword1('');
 						setPassword2('');
-						Router.push('/')
+						Router.push('/login')
 					})
 				}
 			})

@@ -1,10 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import Link from 'next/link';
-// import UserContext to have access to our global user state in this component.
+import UserContext from '../UserContext';
 
 export default function NavBar(){
-
+    const {user} = useContext(UserContext)
     return(
         <Navbar bg="light" expand="lg">
             <Link href='/'>
@@ -13,15 +13,34 @@ export default function NavBar(){
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Link href="/">
-                        <a className="nav-link" role="button">Home</a>
-                    </Link>
-                    <Link href="/register">
-                        <a className="nav-link" role="button">Register</a>
-                    </Link>	
-                    <Link href="/login">
-                        <a className="nav-link" role="button">Login</a>
-                    </Link>						
+                    
+                    {
+                        user.id !== null
+                        ?
+                        <React.Fragment>
+                            <Link href="/">
+                                <a className="nav-link" role="button">Home</a>
+                            </Link>
+                            <Link href="/categories">
+                                <a className="nav-link" role="button">Categories</a>
+                            </Link>
+                            <Link href="/record">
+                                <a className="nav-link" role="button">Records</a>
+                            </Link> 
+                            <Link href="/logout/">
+                                <a className="nav-link" role="button">Logout</a>
+                            </Link>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                        <Link href="/login/">
+                            <a className="nav-link" role="button">Login</a>
+                        </Link>
+                        <Link href="/register/">
+                            <a className="nav-link" role="button">Register</a>
+                        </Link>
+                        </React.Fragment>
+                    }
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

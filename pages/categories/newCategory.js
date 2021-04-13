@@ -60,7 +60,7 @@ export default function AddCategory(){
 
     return (
         <React.Fragment>
-            <Card.Header className='my-5'>New Category</Card.Header>
+            <h1 className='my-5'>New Category</h1>
             <Card>
                 <Card.Body>
                     <Form onSubmit={ e => addCategory(e)}>

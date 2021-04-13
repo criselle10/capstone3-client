@@ -9,23 +9,20 @@ export default function Categories() {
 	const [allCategories, setAllCategories] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:4000/api/categories")
-			.then(res => res.json())
-			.then(data => {
-                console.log(data)
-				setAllCategories(data);
-			});
+		fetch("http://localhost:4000/api/categories", {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            setAllCategories(data);
+        });
 	}, []);
-
-    // const categories = allCategories.map(category => {
-	// 	return (
-	// 		<Course key={category._id} categoryProp={category} />
-	// 	);
-	// });
     
     const listOfCategories =  allCategories.map(category => {
         return (
-            <tr>
+            <tr key={category.name}>
                 <td>{category.name}</td>
                 <td>{category.type}</td>
             </tr>

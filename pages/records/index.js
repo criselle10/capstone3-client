@@ -13,9 +13,7 @@ export default function records() {
 			<h1>Records</h1>
 			<InputGroup>
 				<InputGroup.Prepend>
-                <Button type="submit" variant="primary" href='/records/newRecord'><FontAwesomeIcon icon={faPlus}/>
-                    Add
-                </Button>
+                <Button type="submit" variant="primary" href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
 				</InputGroup.Prepend>
 				<FormControl
 					// id=""

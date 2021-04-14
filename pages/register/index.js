@@ -26,48 +26,48 @@ export default function index(){
 			body: JSON.stringify({
 				email: email
 			}),
-			})
-			.then(res => res.json())
-			.then(data => {
-				if(data){
-					return Swal.fire({
-                        icon: "error",
-                        title: "Email Already Exist.",
-                        text: "Registration Failed."
-                    })  
-				}else{
-					fetch('http://localhost:4000/api/users/', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							firstName: firstName,
-							lastName: lastName,
-							email: email,
-							mobileNo: mobileNo,
-							password: password1,
-							confirmPassword: password2
-						})
+		})
+		.then(res => res.json())
+		.then(data => {
+			if(data){
+				return Swal.fire({
+					icon: "error",
+					title: "Email Already Exist.",
+					text: "Registration Failed."
+				})  
+			}else{
+				fetch('http://localhost:4000/api/users/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						firstName: firstName,
+						lastName: lastName,
+						email: email,
+						mobileNo: mobileNo,
+						password: password1,
+						confirmPassword: password2
 					})
-					.then(res => res.json())
-					.then(data => {
-						console.log(data)
-						Swal.fire({
-                        icon: "success",
-                        title: "You have been registered",
-                        text: "Registration Success."
-                    })  
-						setFirstName('');
-						setLastName('');
-						setEmail('');
-						setMobileNo('');
-						setPassword1('');
-						setPassword2('');
-						Router.push('/login')
-					})
-				}
-			})
+				})
+				.then(res => res.json())
+				.then(data => {
+
+					Swal.fire({
+					icon: "success",
+					title: "You have been registered",
+					text: "Registration Success."
+				})  
+					setFirstName('');
+					setLastName('');
+					setEmail('');
+					setMobileNo('');
+					setPassword1('');
+					setPassword2('');
+					Router.push('/login')
+				})
+			}
+		})
 	}
 
 	useEffect(() => {

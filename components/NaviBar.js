@@ -31,6 +31,9 @@ export default function NavBar(){
                             </Link>
                             <Link href="/charts/monthly-expense">
                                 <a className="nav-link" role="button">Monthly Expense</a>
+                            </Link>
+                            <Link href="/charts/monthly-income">
+                                <a className="nav-link" role="button">Monthly Income</a>
                             </Link> 
                             <Link href="/logout/">
                                 <a className="nav-link" role="button">Logout</a>

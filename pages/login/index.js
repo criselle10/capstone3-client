@@ -30,7 +30,6 @@ export default function Login(){
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
 
             if(data.accessToken){
                 localStorage.setItem('token', data.accessToken)
@@ -91,7 +90,7 @@ export default function Login(){
     }, [email, password]);
 
     function authenticateGoogleToken(response){
-        console.log(response)        
+    
         fetch('http://localhost:4000/api/users/verify-google-id-token', {
             method: 'POST',
             headers: {
@@ -131,7 +130,6 @@ export default function Login(){
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
 
             setUser({
                 id: data._id,

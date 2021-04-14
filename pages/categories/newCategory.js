@@ -20,7 +20,7 @@ export default function AddCategory(){
     
     function addCategory(e){
         e.preventDefault()
-        console.log(type)
+
         let token = localStorage.getItem('token');
         fetch('http://localhost:4000/api/categories', {
             method: 'POST',
@@ -35,10 +35,9 @@ export default function AddCategory(){
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             
             if(data){
-                console.log(data)
+
                 Swal.fire({
                     icon: "success",
                     title: "Category Added",

@@ -4,7 +4,7 @@ import BarChart from './BarChart.js';
 import moment from 'moment';
 
 
-export default function Expense(){
+export default function Income(){
 	const [allRecords, setAllRecords] = useState([]);
 	const [description, setDescription] = useState([]);
 	const [type, setType] = useState([]);
@@ -36,7 +36,7 @@ export default function Expense(){
 			setDate(recordDate)
 
 			const recordAmount = data.filter( record => {
-				if(record.type === 'Expense'){
+				if(record.type === 'Income'){
 					return record
 				}
 			})
@@ -49,7 +49,7 @@ export default function Expense(){
 
 	return (
 		<React.Fragment>
-			<BarChart rawData={allRecords} typeData='Expense' colorData='#ba7b8e' hoverBackgroundColorData='lightblue'/>
+			<BarChart rawData={allRecords} typeData='Income' colorData='#72a5b8' hoverBackgroundColorData='pink'/>
 		</React.Fragment>
     )
 }

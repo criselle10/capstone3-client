@@ -1,5 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react';
 import Router from 'next/router';
+import styles from '../../styles/main.module.css';
 import {Form,Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
@@ -167,7 +168,7 @@ export default function Login(){
                 Submit
                 </Button>
                 :
-                <Button variant="danger" type="submit" id="submitBtn" className='btn-block' disabled>
+                <Button type="submit" id="submitBtn" className='btn-block grey' disabled>
                 Submit
                 </Button>
             }

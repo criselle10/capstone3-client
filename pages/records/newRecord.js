@@ -100,10 +100,8 @@ export default function AddRecord(){
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            
+           
             if(data){
-                console.log(data)
                 Swal.fire({
                     icon: "success",
                     title: "Record Saved",
@@ -167,7 +165,7 @@ export default function AddRecord(){
                         {
                             isActive
                             ? <Button type='submit'>Submit</Button>
-                            : <Button type='submit' disabled className={styles.grey}>Submit</Button>
+                            : <Button type='submit' disabled>Submit</Button>
                         }
                     </Form>
                 </Card.Body>

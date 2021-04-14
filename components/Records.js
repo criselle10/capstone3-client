@@ -30,15 +30,15 @@ export default function Records() {
 		})
 	}, [])
 
-	console.log(allTransaction)
-	console.log(savings)
+	// console.log(allTransaction)
+	// console.log(savings)
 
 	const aTransaction = allTransaction.map(data => {
-	console.log(data.type)
+	// console.log(data.type)
 	if (data.type === 'Income'){
 		//setTotalSavings((totalSavings + data.amount))
 		return(
-			<Card key={data._id}>
+			<Card key={data._id} className='mt-3'>
 			<Card.Body>
 				<Row>
 					<Col className="col-6">
@@ -46,7 +46,7 @@ export default function Records() {
 						<h6>
 							<span className="text-success">Income</span>
 						</h6>
-						<p>{data.createdON}</p>
+						<p>{data.createdOn}</p>
 					</Col>
 					<Col className="col-6 text-right">
 						<h6 className="text-success">+ {data.amount}</h6>
@@ -58,7 +58,7 @@ export default function Records() {
 		)
 	}else{
 		return(
-			<Card key={data._id}>
+			<Card key={data._id} className='mt-3'>
 				<Card.Body>
 					<Row>
 						<Col className="col-6">
@@ -66,42 +66,21 @@ export default function Records() {
 							<h6>
 								<span className="text-danger">Expense</span>
 							</h6>
-							<p>{data.createdON}</p>
+							<p>{data.createdOn}</p>
 						</Col>
 						<Col className="col-6 text-right">
-							<h6 className="text-danger">+ {data.amount}</h6>
+							<h6 className="text-danger"> - {data.amount}</h6>
 							<span className="text-danger">{savings}</span>
 						</Col>
 					</Row>
 				</Card.Body>
 			</Card>
-	)}	
+	    )}	
 	})
 
 	return (
 		<React.Fragment>
-			<h1>Records</h1>
-			<InputGroup>
-				<InputGroup.Prepend>
-					<Button variant="success" type="submit" id="submitBtn">
-						Add
-					</Button>
-				</InputGroup.Prepend>
-				<FormControl
-					placeholder="Search Record"
-				/>
-				<Form.Control
-					as="select"
-					required
-				>
-					<option>All</option>
-					<option>Income</option>
-					<option>Expense</option>
-				</Form.Control>
-			</InputGroup>
-			
 			{aTransaction}
-			
 		</React.Fragment>
 	);
 }

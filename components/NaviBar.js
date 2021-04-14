@@ -29,7 +29,7 @@ export default function NavBar(){
                             <Link href="/records/">
                                 <a className="nav-link" role="button">Records</a>
                             </Link>
-                            <Link href="/">
+                            <Link href="/charts/monthly-expense">
                                 <a className="nav-link" role="button">Monthly Expense</a>
                             </Link> 
                             <Link href="/logout/">

@@ -7,8 +7,9 @@ export default function Records() {
 
 	const [allTransaction, setAllTransaction] = useState([]);
 	const [savings, setSavings] = useState([]);
-	const [expense, setExpense] = ([]);
-	const [income, setIncome] = ([]);
+	const [expense, setExpense] = useState(0);
+	const [income, setIncome] = useState(0);
+	const [totalBudget, setTotalBudget] = useState(0);
 	const [allExpense, setAllExpense] = useState([]);
 	const [allIncome, setAllIncome] = useState([]);
 	const [type, setType] = useState("All");
@@ -23,6 +24,15 @@ export default function Records() {
 		.then(res => res.json())
 		.then(data => {
 			setAllTransaction(data);
+			const ListOfIncomeTransaction = data.filter(value => value.type === 'Income');
+			const ListOfExpenseTransaction = data.filter(value => value.type === 'Expense');
+			const totalExpense = ListOfExpenseTransaction.reduce((a, b) => +a + +b.amount, 0)
+			const totalIncome = ListOfIncomeTransaction.reduce((a, b) => +a + +b.amount, 0)
+			setExpense(totalExpense);
+			console.log(totalExpense)
+			setIncome(totalIncome);
+			console.log(totalIncome)
+			setTotalBudget(totalIncome - totalExpense);
 
 			data.map(data => {
 				if(data.type === 'Income'){
@@ -44,13 +54,11 @@ export default function Records() {
 		})
 	}, [])
 
-	// useEffect(() )
-
 	const aTransaction = allTransaction.slice(0).reverse().map(data => {
-		// const ListOfIncomeTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Income');
-		// const ListOfExpenseTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Expense');
-		// const totalIncome = ListOfIncomeTransaction.reduce((a, b) => +a + +b.amount, 0);
-		// const totalExpense = ListOfExpenseTransaction.reduce((a, b) => +a + +b.amount, 0);
+		const ListOfIncomeTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Income');
+		const ListOfExpenseTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Expense');
+		const totalIncome = ListOfIncomeTransaction.reduce((a, b) => +a + +b.amount, 0);
+		const totalExpense = ListOfExpenseTransaction.reduce((a, b) => +a + +b.amount, 0);
 
 		let dateObject = new Date(data.createdOn);
 		let dateString = JSON.stringify(dateObject.toUTCString());
@@ -71,6 +79,7 @@ export default function Records() {
 						</Col>
 						<Col className="col-6 text-right">
 							<h6 className="text-success">+ {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+							<span className="text-success">{totalIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
 						</Col>
 					</Row>
 				</Card.Body>
@@ -91,6 +100,7 @@ export default function Records() {
 							</Col>
 							<Col className="col-6 text-right">
 								<h6 className="text-danger"> - {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+								<span className="text-danger">{totalExpense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
 							</Col>
 						</Row>
 					</Card.Body>
@@ -154,8 +164,14 @@ export default function Records() {
 	return (
         <React.Fragment>
 			<div className='row' >
-				<h3 className='col-md-12 col-lg-6 my-4'>Records</h3>
-				<h3 className='col-md-12 col-lg-6 my-4'>Total Savings: {savings.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h3>
+				<div className='col-6'>
+					<h3 className='col-md-12 col-lg-6 my-4'>Records</h3>
+				</div>
+				<div className='col-6'>
+					<h5>Total Income: {income.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+					<h5>Total Expense: {expense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+					<h5>Current Savings: {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+				</div>
 			</div>
 			<InputGroup>
 				<InputGroup.Prepend>

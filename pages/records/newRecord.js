@@ -6,7 +6,7 @@ import styles from '../../styles/main.module.css';
 
 export default function AddRecord(){
     
-    const [ategoryList, setCategoryList] = useState("");
+    const [categoryList, setCategoryList] = useState("");
     const [incomeCategoryList, setIncomeCategoryList] = useState("");
     const [expenseCategoryList, setExpenseCategoryList] = useState("");
     const [type, setType] = useState('');
@@ -100,14 +100,32 @@ export default function AddRecord(){
         })
         .then(res => res.json())
         .then(data => {
-           
             if(data){
-                Swal.fire({
-                    icon: "success",
-                    title: "Record Saved",
-                    text: "Thank you for adding record."
+
+                fetch('http://localhost:4000/api/users/savingsUpdate', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
                 })
-                Router.push('/records')
+                .then(res => res.json())
+                .then(data => {
+                    if(data){
+                        Swal.fire({
+                            icon: "success",
+                            title: "Record Saved",
+                            text: "Thank you for adding record."
+                        })
+                        Router.push('/records')
+                    }else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Please Try Again",
+                            text: "Failed adding record."
+                        })
+                    }
+                    
+                })
             }else {   
                 Swal.fire({
                     icon: "error",

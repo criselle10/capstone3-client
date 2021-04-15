@@ -4,7 +4,7 @@ import Link from 'next/link';
 import UserContext from '../UserContext';
 import styles from '../styles/main.module.css';
 
-export default function NavBar(){
+export default function NaviBar(){
     const {user} = useContext(UserContext)
     return(
         <Navbar bg="light" expand="lg">

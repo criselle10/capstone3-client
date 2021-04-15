@@ -1,0 +1,6 @@
+<span className="text-success">{totalIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+<span className="text-danger">{totalExpense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+
+
+<p className='col-md-12 col-lg-6'>Total Expense:{savings.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+				<p className='col-md-12 col-lg-6'>Current Savings:{savings.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>

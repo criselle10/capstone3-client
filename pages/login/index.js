@@ -1,6 +1,5 @@
 import React,{useState,useEffect,useContext} from 'react';
 import Router from 'next/router';
-import styles from '../../styles/main.module.css';
 import {Form,Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
@@ -106,6 +105,13 @@ export default function Login(){
             if(typeof data.accessToken !== 'undefined'){
                 localStorage.setItem('token', data.accessToken)
                 retrieveUserDetails(data.accessToken);
+
+                Swal.fire(
+                    'Google Logged In successfuly',
+                    'Google ka na',
+                    'success'
+                )
+                Router.push('/')
             }else {
                 if(data.error === 'google-auth-error'){
                     Swal.fire(
@@ -126,7 +132,9 @@ export default function Login(){
     
     function retrieveUserDetails(accessToken){
         fetch('http://localhost:4000/api/users/details', {
-            headers: {Authorization: `Bearer ${accessToken}`}
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
         })
         .then(res => res.json())
         .then(data => {
@@ -135,13 +143,13 @@ export default function Login(){
                 id: data._id,
             })
             localStorage.setItem('id', data._id)
-            Router.push('/categories');
+            Router.push('/');
         })
     }
     
     return(
          <Form onSubmit={(e) => loginUser(e)}>
-            <Form.Group controlId="userEmail">
+            <Form.Group controlId="userEmail" className='mt-5'>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
                     type = "email"

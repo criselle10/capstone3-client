@@ -7,22 +7,19 @@ import styles from '../styles/main.module.css';
 export default function NaviBar(){
     const {user} = useContext(UserContext)
     return(
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
             <Link href='/'>
                 <a className="navbar-brand">
-                    <h4 className={styles.blue}>[coin]</h4>
+                    <h4 className={styles.white}>[coin]</h4>
                 </a>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav varian='tabs' className="mr-auto">
+                <Nav className="navibar mr-auto">
                     {
                         user.id !== null
                         ?
                         <React.Fragment>
-                            <Link href="/">
-                                <a className="nav-link" role="button">Home</a>
-                            </Link>
                             <Link href="/categories/">
                                 <a className="nav-link" role="button">Categories</a>
                             </Link>

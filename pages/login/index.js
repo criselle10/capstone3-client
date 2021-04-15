@@ -29,7 +29,7 @@ export default function Login(){
         })
         .then(res => res.json())
         .then(data => {
-
+            console.log(data)
             if(data.accessToken){
                 localStorage.setItem('token', data.accessToken)
 
@@ -55,7 +55,7 @@ export default function Login(){
                     text: 'Thank you for logging in.'
                 })
 
-                Router.push('/')
+                Router.push('/records')
             }else {
                 if(data.error === 'does-not-exist'){
                     Swal.fire({
@@ -101,7 +101,6 @@ export default function Login(){
         })
         .then(res => res.json())
         .then(data => {
-            
             if(typeof data.accessToken !== 'undefined'){
                 localStorage.setItem('token', data.accessToken)
                 retrieveUserDetails(data.accessToken);
@@ -111,7 +110,7 @@ export default function Login(){
                     'Google ka na',
                     'success'
                 )
-                Router.push('/')
+                Router.push('/categories')
             }else {
                 if(data.error === 'google-auth-error'){
                     Swal.fire(
@@ -143,7 +142,7 @@ export default function Login(){
                 id: data._id,
             })
             localStorage.setItem('id', data._id)
-            Router.push('/');
+            Router.push('/records');
         })
     }
     

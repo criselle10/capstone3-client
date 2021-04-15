@@ -2,10 +2,12 @@ h1.red {
     color: pink;
 }
 
-
+.navBar {
+    color: pink;
+}
 
 h4.blue {
-    color: blue;
+    color: white;
 }
 
 Button.grey {

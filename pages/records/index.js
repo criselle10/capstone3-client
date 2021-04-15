@@ -33,8 +33,10 @@ export default function Records() {
 			setIncome(totalIncome);
 			console.log(totalIncome)
 			setTotalBudget(totalIncome - totalExpense);
+			
 
 			data.map(data => {
+				console.log(data)
 				if(data.type === 'Income'){
 					setAllIncome(allIncome => [...allIncome, data])
 				}else{
@@ -73,7 +75,7 @@ export default function Records() {
 						<Col className="col-6">
 							<h5>{data.description}</h5>
 							<h6>
-								<span className="text-success">Income</span>
+							<span className="text-success">Income <span className='text-dark'>({data.name})</span></span>
 							</h6>
 							<p>{dateString}</p>
 						</Col>
@@ -94,7 +96,7 @@ export default function Records() {
 							<Col className="col-6">
 								<h5>{data.description}</h5>
 								<h6>
-									<span className="text-danger">Expense</span>
+									<span className="text-danger">Expense <span className='text-dark'>({data.name})</span></span>
 								</h6>
 								<p>{dateString}</p>
 							</Col>
@@ -111,7 +113,11 @@ export default function Records() {
 
 	let listOfIncome = allIncome.slice(0).reverse().map(data => {
 
-		let dateObject = new Date(data.createdON);
+		const ListOfIncomeTransaction = allIncome.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Income');
+		
+		const totalIncome = ListOfIncomeTransaction.reduce((a, b) => +a + +b.amount, 0);
+
+		let dateObject = new Date(data.createdOn);
 	   	let dateString = JSON.stringify(dateObject.toUTCString());
 	   	dateString = dateString.substring(1, dateString.length - 13);
 
@@ -122,12 +128,13 @@ export default function Records() {
 						<Col className="col-6">
 							<h5>{data.description}</h5>
 							<h6>
-								<span className="text-success">Income</span>
+								<span className="text-success">Income <span className='text-dark'>({data.name})</span></span>
 								<p>{dateString}</p>
 							</h6>
 						</Col>
 						<Col className="col-6 text-right">
 							<h6 className="text-success">+ {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+							<span className="text-success">{totalIncome.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
 						</Col>
 					</Row>
 				</Card.Body>
@@ -136,8 +143,10 @@ export default function Records() {
    	})
 
    	let listOfExpense = allExpense.slice(0).reverse().map(data => {
+		const ListOfExpenseTransaction = allExpense.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Expense');
+		const totalExpense = ListOfExpenseTransaction.reduce((a, b) => +a + +b.amount, 0);
 
-		let dateObject = new Date(data.createdON);
+		let dateObject = new Date(data.createdOn);
 		let dateString = JSON.stringify(dateObject.toUTCString());
 		dateString = dateString.substring(1, dateString.length - 13);
 
@@ -148,13 +157,16 @@ export default function Records() {
 						<Col className="col-6">
 							<h5>{data.description}</h5>
 							<h6>
-								<span className="text-danger">Expense</span>
-								<p>{dateString}</p>	
+								<span className="text-danger ">Expense <span className='text-dark'>({data.name})</span></span>
+								
 							</h6>
-							
+							<h6>
+								{dateString}
+							</h6>
 						</Col>
 						<Col className="col-6 text-right">
 							<h6 className="text-danger"> - {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+							<span className="text-danger">{totalExpense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
 						</Col>
 					</Row>
 				</Card.Body>
@@ -164,18 +176,22 @@ export default function Records() {
 	return (
         <React.Fragment>
 			<div className='row' >
-				<div className='col-6'>
-					<h3 className='col-md-12 col-lg-6 my-4'>Records</h3>
-				</div>
-				<div className='col-6'>
+				<h3 className='col-md-12 col-lg-6 my-4'>Records</h3>
+			</div>
+			<div className='row text-center mb-4'>
+				<div className='col-4'>
 					<h5>Total Income: {income.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
-					<h5>Total Expense: {expense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+				</div>
+				<div className='col-4'>
+					<h5>Total Expense: {expense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>	
+				</div>	
+				<div className='col-4'>
 					<h5>Current Savings: {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
 				</div>
 			</div>
 			<InputGroup>
 				<InputGroup.Prepend>
-                <Button type="submit" variant="primary" href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
+                <Button type="submit" variant="primary	" href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
 				</InputGroup.Prepend>
 				<FormControl
 					// id=""

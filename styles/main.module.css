@@ -1,15 +1,15 @@
-h1.red {
-    color: pink;
+.center {
+    height: 91.7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.navBar {
-    color: pink;
+.container {
+    border-style: inset;
+    border-color: black pink;
 }
 
-h4.blue {
-    color: white;
-}
-
-Button.grey {
-    color: grey;
+.login {
+    margin: 100px;
 }

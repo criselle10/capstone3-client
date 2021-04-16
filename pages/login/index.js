@@ -1,5 +1,6 @@
 import React,{useState,useEffect,useContext} from 'react';
 import Router from 'next/router';
+import styles from '../../styles/main.module.css';
 import {Form,Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
@@ -147,48 +148,53 @@ export default function Login(){
     }
     
     return(
-         <Form onSubmit={(e) => loginUser(e)}>
-            <Form.Group controlId="userEmail" className='mt-5'>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                    type = "email"
-                    placeholder = "Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            <Form.Group controlId="userPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control 
-                    type = "password"
-                    placeholder = "Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </Form.Group>
-            { isActive ? 
-                <Button variant="primary" type="submit" id="submitBtn" className='btn-block'>
-                Submit
-                </Button>
-                :
-                <Button type="submit" id="submitBtn" className='btn-block grey' disabled>
-                Submit
-                </Button>
-            }
-            <GoogleLogin
-                // to use google login, you need a proper client id. 
-                clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
-                // mutable text in button, changeable text
-                buttonText = 'Login with Google'
-                // This is for us to run a function successfully
-                onSuccess = {authenticateGoogleToken}
-                // Function to run if not successful
-                onFailure = {authenticateGoogleToken}
-                cookiePolicy = {'single_host_origin'}
-                className = 'w-100 text-center my-4 d-flex justify-content-center'
-            />   
-        </Form>
+        <div className="center">
+            <div className={styles.container}>
+                <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
+                    <h3 className='text-center'>Welcome to Income Expense Tracker</h3>
+                    <Form.Group controlId="userEmail" className='mt-5'>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
+                            type = "email"
+                            placeholder = "Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="userPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type = "password"
+                            placeholder = "Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+                    { isActive ? 
+                        <Button variant="primary" type="submit" id="submitBtn" className='btn-block'>
+                        Submit
+                        </Button>
+                        :
+                        <Button type="submit" id="submitBtn" className='btn-block grey' disabled>
+                        Submit
+                        </Button>
+                    }
+                    <GoogleLogin
+                        // to use google login, you need a proper client id. 
+                        clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
+                        // mutable text in button, changeable text
+                        buttonText = 'Login with Google'
+                        // This is for us to run a function successfully
+                        onSuccess = {authenticateGoogleToken}
+                        // Function to run if not successful
+                        onFailure = {authenticateGoogleToken}
+                        cookiePolicy = {'single_host_origin'}
+                        className = 'w-100 text-center my-4 d-flex justify-content-center'
+                    />   
+                </Form>
+            </div>
+        </div>
     )   
 }

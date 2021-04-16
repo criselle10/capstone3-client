@@ -1,8 +1,10 @@
+import Login from '../pages/login';
+import styles from '../styles/main.module.css';
 
 export default function Home() {
-
-
     return (
-        <h1>Hello</h1>
+        <div className={styles.center}>
+            <Login />
+        </div>
     )
 }

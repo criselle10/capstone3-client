@@ -40,15 +40,15 @@ export default function AddCategory(){
 
                 Swal.fire({
                     icon: "success",
-                    title: "Category Added",
-                    text: "Thank you for adding category."
+                    title: "Category Saved",
+                    // text: "Thank you for adding category."
                 })
                 Router.push('/categories')
             }else {   
                 Swal.fire({
                     icon: "error",
                     title: "Please Try Again",
-                    text: "Failed adding category."
+                    // text: "Failed adding category."
                 })
             }      
         })

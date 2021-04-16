@@ -114,14 +114,14 @@ export default function AddRecord(){
                         Swal.fire({
                             icon: "success",
                             title: "Record Saved",
-                            text: "Thank you for adding record."
+                            // text: "Thank you for adding record."
                         })
                         Router.push('/records')
                     }else {
                         Swal.fire({
                             icon: "error",
                             title: "Please Try Again",
-                            text: "Failed adding record."
+                            // text: "Failed adding record."
                         })
                     }
                     

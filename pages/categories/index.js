@@ -11,7 +11,7 @@ export default function Categories() {
 	const [allCategories, setAllCategories] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:4000/api/categories", {
+		fetch("https://guarded-escarpment-99106.herokuapp.com/api/categories", {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

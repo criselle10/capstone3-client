@@ -18,7 +18,7 @@ export default function index(){
 		e.preventDefault();
 
 
-		fetch('http://localhost:4000/api/users/emailExist', {
+		fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/emailExist', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export default function index(){
 					text: "Registration Failed."
 				})  
 			}else{
-				fetch('http://localhost:4000/api/users/', {
+				fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'

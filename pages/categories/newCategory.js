@@ -22,7 +22,7 @@ export default function AddCategory(){
         e.preventDefault()
 
         let token = localStorage.getItem('token');
-        fetch('http://localhost:4000/api/categories', {
+        fetch('https://guarded-escarpment-99106.herokuapp.com/api/categories', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ export default function Login(){
     function loginUser(e){
         e.preventDefault();
 
-        fetch('http://localhost:4000/api/users/login', {
+        fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ export default function Login(){
             if(data.accessToken){
                 localStorage.setItem('token', data.accessToken)
 
-                fetch('http://localhost:4000/api/users/details', {
+                fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/details', {
                     headers: {
                         Authorization: `Bearer ${data.accessToken}`
                     }
@@ -55,7 +55,7 @@ export default function Login(){
                     text: 'Thank you for logging in.'
                 })
 
-                Router.push('/records')
+                Router.push('/categories')
             }else {
                 if(data.error === 'does-not-exist'){
                     Swal.fire({
@@ -90,7 +90,7 @@ export default function Login(){
 
     function authenticateGoogleToken(response){
     
-        fetch('http://localhost:4000/api/users/verify-google-id-token', {
+        fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/verify-google-id-token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -130,7 +130,7 @@ export default function Login(){
     }
     
     function retrieveUserDetails(accessToken){
-        fetch('http://localhost:4000/api/users/details', {
+        fetch('https://guarded-escarpment-99106.herokuapp.com/api/users/details', {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }

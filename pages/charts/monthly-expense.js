@@ -12,7 +12,7 @@ export default function Expense(){
 	const [amount, setAmount] = useState([]);
 
 	useEffect(()=> {
-		fetch('http://localhost:4000/api/records/', {
+		fetch('https://guarded-escarpment-99106.herokuapp.com/api/records/', {
 		    headers: {
 		        'Authorization': `Bearer ${localStorage.getItem('token')}`
 		    }

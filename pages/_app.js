@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 import React, {useState, useEffect} from 'react';
 import NaviBar from '../components/NaviBar';
+import Login from '../pages/login';
 import {Container} from 'react-bootstrap';
 import {UserProvider} from '../UserContext';
 
@@ -24,14 +25,14 @@ function MyApp({ Component, pageProps }) {
     }, [])
 
     return (
-        <React.Fragment>
+        <div id="root">
             <UserProvider value={{user, setUser, unsetUser}}>
             <NaviBar />
                 <Container>
                     <Component {...pageProps} />
                 </Container>
             </UserProvider>
-        </React.Fragment>
+        </div>
     )
 }
 

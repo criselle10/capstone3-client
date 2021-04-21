@@ -1,0 +1,36 @@
+.container {
+    border-style: inset;
+    border-color: black pink;
+    color: wheat;
+}
+
+.login {
+    margin: 100px;
+    justify-content: center;
+    /* border-style: center; */
+    border: 3px solid black ;
+    border-radius: 30px;
+    height: 50vh;
+    width: 65%;
+}
+
+.loginForm {
+    margin: 30px;
+}
+
+.googleLogin {
+    border-radius: 100px;
+    width: 80%;
+    margin: 0 30px 10px 30px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    justify-self: center;
+    display: flex;
+}
+
+/* .column1 {
+    background: #133D4F;
+} */

@@ -1,10 +1,10 @@
 import React,{useState,useEffect,useContext} from 'react';
 import Router from 'next/router';
-import styles from '../../styles/main.module.css';
 import {Form,Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
 import {GoogleLogin} from 'react-google-login';
+import styles from './login.module.css';
 
 export default function Login(){
 
@@ -148,11 +148,11 @@ export default function Login(){
     }
     
     return(
-        <div className={styles.center}>
-            <div className={styles.container}>
-                <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
-                    <h3 className='text-center'>Welcome to Income Expense Tracker</h3>
-                    <Form.Group controlId="userEmail" className='mt-5'>
+        <div className='row' >
+            <div className='col-6' className={styles.column1}>
+                <div className='col-6 col-md-6 col-lg-12'>
+                    <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
+                    <Form.Group controlId="userEmail" className={styles.loginForm}>
                         <Form.Label>Email</Form.Label>
                         <Form.Control 
                             type = "email"
@@ -163,7 +163,7 @@ export default function Login(){
                             className={styles.emailTextInput}
                         />
                     </Form.Group>
-                    <Form.Group controlId="userPassword">
+                    <Form.Group controlId="userPassword" className={styles.loginForm}>
                         <Form.Label>Password</Form.Label>
                         <Form.Control 
                             type = "password"
@@ -174,13 +174,13 @@ export default function Login(){
                             className={styles.emailTextInput}
                         />
                     </Form.Group>
-                    <div className={styles.logInButtons}>
+                    <div>
                         { isActive ? 
-                            <Button variant="primary" type="submit" id="submitBtn" className={styles.emailTextInput}>
+                            <Button variant="primary" type="submit" id="submitBtn" className={styles.googleLogin}>
                             Submit
                             </Button>
                             :
-                            <Button type="submit" id="submitBtn" className={styles.emailTextInput} disabled>
+                            <Button type="submit" id="submitBtn" className={styles.googleLogin} disabled>
                             Submit
                             </Button>
                         }
@@ -194,10 +194,17 @@ export default function Login(){
                             // Function to run if not successful
                             onFailure = {authenticateGoogleToken}
                             cookiePolicy = {'single_host_origin'}
-                            className={styles.emailTextInput}  
+                            className={styles.googleLogin}  
                         />
                     </div>   
-                </Form>
+                    </Form>
+                </div>
+            </div>
+            <div className='col-6'>
+                <div className='col-6 col-lg-12'>
+                    <span>Welcome to [ coin ]</span>
+                    <img src='/015-money bag.png' alt='' className={styles.image} />
+                </div>
             </div>
         </div>
     )   

@@ -13,7 +13,8 @@ export default function Records() {
 	const [allExpense, setAllExpense] = useState([]);
 	const [allIncome, setAllIncome] = useState([]);
 	const [type, setType] = useState("All");
-	const [searchName, setSearchName] = useState('');
+	const [search, setSearch] = useState('');
+	const [searchResult, setSearchResult] = useState([]);
 
 	useEffect(() => {
 		let token = localStorage.getItem("token");
@@ -52,31 +53,8 @@ export default function Records() {
 				
 				setSavings(data.savings)
 			})
-
-			data.filter(data => {
-				console.log(data)
-				if(searchName == '') {
-					return data
-				}else if(data.description.toLowerCase().includes(searchName.toLowerCase())){
-					return data
-				}
-			}).map((data) => {
-				return(
-					data.description
-				)
-			})
 		})
 	}, [])
-
-	// useEffect(() => {
-	// 	console.log(searchName)
-	// 	const data = searchName;
-		
-	// }, [searchName])
-
-	// const filteredName = allTransaction.filter(data => {
-	// 	return data.name.toLowerCase().includes(searchName.toLowerCase())
-	// })
 
 	const aTransaction = allTransaction.slice(0).reverse().map(data => {
 		const ListOfIncomeTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Income');
@@ -195,9 +173,82 @@ export default function Records() {
 			</Card>
 		)
 	})	
-	const filteredName = allTransaction.filter(data => {
-		return data.name.toLowerCase().includes(searchName.toLowerCase())
+
+	useEffect(() => {
+
+		if(search === ''){return null}
+
+		
+		if(type === 'All'){
+
+			let tempResult = allTransaction.filter(record => record.description.toLowerCase().includes(search.toLowerCase()))
+			setSearchResult(tempResult)
+
+		}else if(type === 'Income'){
+
+			let tempResult = allIncome.filter(record => record.description.toLowerCase().includes(search.toLowerCase()))
+			setSearchResult(tempResult)
+
+		}else if(type === 'Expense'){
+
+			let tempResult = allExpense.filter(record => record.description.toLowerCase().includes(search.toLowerCase()))
+			setSearchResult(tempResult)
+		}
+	
+
+	}, [search])
+
+	const allSearch = searchResult.slice(0).reverse().map(data => {
+		let dateObject = new Date(data.createdOn);
+		let dateString = JSON.stringify(dateObject.toUTCString());
+		dateString = dateString.substring(1, dateString.length - 13);
+
+		if (data.type === 'Income'){
+
+			return(
+				<Card key={data._id} className='mt-3'>
+				<Card.Body>
+					<Row>
+						<Col className="col-6">
+							<h5>{data.description}</h5>
+							<h6>
+								<span className="text-success">Income</span>
+								<p>{dateString}</p>
+							</h6>
+							
+						</Col>
+						<Col className="col-6 text-right">
+							<h6 className="text-success">+ {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+						</Col>
+					</Row>
+				</Card.Body>
+				</Card>
+			)
+		}else{
+							
+			return(
+				<Card key={data._id} className='mt-3'>
+					<Card.Body>
+						<Row>
+							<Col className="col-6">
+								<h5>{data.description}</h5>
+								<h6>
+									<span className="text-danger">Expense</span>
+									<p>{dateString}</p>	
+								</h6>
+								
+							</Col>
+							<Col className="col-6 text-right">
+								<h6 className="text-danger"> - {data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h6>
+								
+							</Col>
+						</Row>
+					</Card.Body>
+				</Card>
+			)
+		}	
 	})
+
 	return (
         <React.Fragment>
 			<div className='row' >
@@ -221,14 +272,12 @@ export default function Records() {
 				<FormControl
 					type="text"
 					placeholder="Search Record"
-					onChange={(e) => setSearchName(e.target.value)}
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
 				/>
-				{filteredName.map((data, key) => {
-					<Records key={data._id} {...data} />
-				})}
+				
 				<Form.Control
 					as="select"
-					// value={}
 					onChange={(e) => setType(e.target.value)}
 					required
 				>
@@ -237,15 +286,20 @@ export default function Records() {
 					<option>Expense</option>
 				</Form.Control>
 			</InputGroup>
-			{type == 'All'
-			?
-				aTransaction
-			:
-			type == 'Income'
-			?
-				listOfIncome
-			:
-				listOfExpense
+			{	
+				search !== ''
+				?
+				allSearch
+				:
+				type == 'All'
+				?
+					aTransaction
+				:
+				type == 'Income'
+				?
+					listOfIncome
+				:
+					listOfExpense
 			}
 		</React.Fragment>       
 	);

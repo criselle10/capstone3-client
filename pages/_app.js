@@ -27,9 +27,9 @@ function MyApp({ Component, pageProps }) {
         <React.Fragment>
             <UserProvider value={{user, setUser, unsetUser}}>
             <NaviBar />
-            <Container>
-                <Component {...pageProps} />
-            </Container>
+                <Container>
+                    <Component {...pageProps} />
+                </Container>
             </UserProvider>
         </React.Fragment>
     )

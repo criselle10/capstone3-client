@@ -1,15 +1,57 @@
 .center {
-    height: 91.7vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 80%;
 }
 
+.categories a {
+    color: white;
+}
+
+.navbar {
+    /* display: flex; */
+    color: white;
+    height: 50px;
+    margin: 5px 10px 10px 10px;
+    padding: 10px;
+}
+
+.navbar a:hover {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.link {
+    display: inline;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+}
+
+.coin {
+    color: #FFD700;
+    display: inline;
+    margin: 30px;
+    font-size: 30px;
+}
 .container {
     border-style: inset;
     border-color: black pink;
+    color: wheat;
 }
 
 .login {
     margin: 100px;
+}
+
+.emailTextInput {
+    border-radius: 100px;
+    width: 60%;
+}
+
+@media (max-width: 600px) {
+    .coin {
+        font-size: 25px;
+    }
 }

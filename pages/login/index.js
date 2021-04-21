@@ -148,7 +148,7 @@ export default function Login(){
     }
     
     return(
-        <div className="center">
+        <div className={styles.center}>
             <div className={styles.container}>
                 <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
                     <h3 className='text-center'>Welcome to Income Expense Tracker</h3>
@@ -160,6 +160,7 @@ export default function Login(){
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            className={styles.emailTextInput}
                         />
                     </Form.Group>
                     <Form.Group controlId="userPassword">
@@ -170,29 +171,32 @@ export default function Login(){
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            className={styles.emailTextInput}
                         />
                     </Form.Group>
-                    { isActive ? 
-                        <Button variant="primary" type="submit" id="submitBtn" className='btn-block'>
-                        Submit
-                        </Button>
-                        :
-                        <Button type="submit" id="submitBtn" className='btn-block grey' disabled>
-                        Submit
-                        </Button>
-                    }
-                    <GoogleLogin
-                        // to use google login, you need a proper client id. 
-                        clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
-                        // mutable text in button, changeable text
-                        buttonText = 'Login with Google'
-                        // This is for us to run a function successfully
-                        onSuccess = {authenticateGoogleToken}
-                        // Function to run if not successful
-                        onFailure = {authenticateGoogleToken}
-                        cookiePolicy = {'single_host_origin'}
-                        className = 'w-100 text-center my-4 d-flex justify-content-center'
-                    />   
+                    <div className={styles.logInButtons}>
+                        { isActive ? 
+                            <Button variant="primary" type="submit" id="submitBtn" className={styles.emailTextInput}>
+                            Submit
+                            </Button>
+                            :
+                            <Button type="submit" id="submitBtn" className={styles.emailTextInput} disabled>
+                            Submit
+                            </Button>
+                        }
+                        <GoogleLogin
+                            // to use google login, you need a proper client id. 
+                            clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
+                            // mutable text in button, changeable text
+                            buttonText = 'Login with Google'
+                            // This is for us to run a function successfully
+                            onSuccess = {authenticateGoogleToken}
+                            // Function to run if not successful
+                            onFailure = {authenticateGoogleToken}
+                            cookiePolicy = {'single_host_origin'}
+                            className={styles.emailTextInput}  
+                        />
+                    </div>   
                 </Form>
             </div>
         </div>

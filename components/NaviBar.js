@@ -7,47 +7,44 @@ import styles from '../styles/main.module.css';
 export default function NaviBar(){
     const {user} = useContext(UserContext)
     return(
-        <Navbar expand="lg">
-            <Link href='/'>
-                <a className="navbar-brand">
-                    <h4 className={styles.white}>[coin]</h4>
-                </a>
-            </Link>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="navibar mr-auto">
+        <>
+            <nav className={styles.navbar}>
+                <div className='navbar-container'>
+                    <Link href='/' className={styles.h4}>
+                            <h4 className={styles.coin}>[coin]</h4>
+                    </Link>
                     {
                         user.id !== null
                         ?
                         <React.Fragment>
                             <Link href="/categories/">
-                                <a className="nav-link" role="button">Categories</a>
+                                <a className={styles.link} role="button">Categories</a>
                             </Link>
                             <Link href="/records/">
-                                <a className="nav-link" role="button">Records</a>
+                                <a className={styles.link} role="button">Records</a>
                             </Link>
                             <Link href="/charts/monthly-expense">
-                                <a className="nav-link" role="button">Monthly Expense</a>
+                                <a className={styles.link} role="button">Monthly Expense</a>
                             </Link>
                             <Link href="/charts/monthly-income">
-                                <a className="nav-link" role="button">Monthly Income</a>
+                                <a className={styles.link} role="button">Monthly Income</a>
                             </Link> 
                             <Link href="/logout/">
-                                <a className="nav-link" role="button">Logout</a>
+                                <a className={styles.link} role="button">Logout</a>
                             </Link>
                         </React.Fragment>
                         :
                         <React.Fragment>
-                        <Link href="/login/">
-                            <a className="nav-link" role="button">Login</a>
-                        </Link>
-                        <Link href="/register/">
-                            <a className="nav-link" role="button">Register</a>
-                        </Link>
+                            <Link href="/login/">
+                                <a className={styles.link} role="button">Login</a>
+                            </Link>
+                            <Link href="/register/">
+                                <a className={styles.link} role="button">Register</a>
+                            </Link>
                         </React.Fragment>
                     }
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+                </div>
+            </nav>
+        </>
     )
 }

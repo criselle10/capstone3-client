@@ -13,6 +13,7 @@ export default function Records() {
 	const [allExpense, setAllExpense] = useState([]);
 	const [allIncome, setAllIncome] = useState([]);
 	const [type, setType] = useState("All");
+	const [searchName, setSearchName] = useState('');
 
 	useEffect(() => {
 		let token = localStorage.getItem("token");
@@ -23,20 +24,17 @@ export default function Records() {
 		})
 		.then(res => res.json())
 		.then(data => {
+			console.log(data)
 			setAllTransaction(data);
 			const ListOfIncomeTransaction = data.filter(value => value.type === 'Income');
 			const ListOfExpenseTransaction = data.filter(value => value.type === 'Expense');
 			const totalExpense = ListOfExpenseTransaction.reduce((a, b) => +a + +b.amount, 0)
 			const totalIncome = ListOfIncomeTransaction.reduce((a, b) => +a + +b.amount, 0)
 			setExpense(totalExpense);
-			console.log(totalExpense)
 			setIncome(totalIncome);
-			console.log(totalIncome)
 			setTotalBudget(totalIncome - totalExpense);
-			
 
 			data.map(data => {
-				console.log(data)
 				if(data.type === 'Income'){
 					setAllIncome(allIncome => [...allIncome, data])
 				}else{
@@ -51,10 +49,34 @@ export default function Records() {
 			})
 			.then(res => res.json())
 			.then(data => {
+				
 				setSavings(data.savings)
+			})
+
+			data.filter(data => {
+				console.log(data)
+				if(searchName == '') {
+					return data
+				}else if(data.description.toLowerCase().includes(searchName.toLowerCase())){
+					return data
+				}
+			}).map((data) => {
+				return(
+					data.description
+				)
 			})
 		})
 	}, [])
+
+	// useEffect(() => {
+	// 	console.log(searchName)
+	// 	const data = searchName;
+		
+	// }, [searchName])
+
+	// const filteredName = allTransaction.filter(data => {
+	// 	return data.name.toLowerCase().includes(searchName.toLowerCase())
+	// })
 
 	const aTransaction = allTransaction.slice(0).reverse().map(data => {
 		const ListOfIncomeTransaction = allTransaction.filter(value => value.dateOfTransaction <= data.dateOfTransaction && value.type === 'Income');
@@ -173,6 +195,9 @@ export default function Records() {
 			</Card>
 		)
 	})	
+	const filteredName = allTransaction.filter(data => {
+		return data.name.toLowerCase().includes(searchName.toLowerCase())
+	})
 	return (
         <React.Fragment>
 			<div className='row' >
@@ -194,13 +219,17 @@ export default function Records() {
                 <Button type="submit" variant="primary	" href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
 				</InputGroup.Prepend>
 				<FormControl
-					// id=""
+					type="text"
 					placeholder="Search Record"
+					onChange={(e) => setSearchName(e.target.value)}
 				/>
+				{filteredName.map((data, key) => {
+					<Records key={data._id} {...data} />
+				})}
 				<Form.Control
 					as="select"
 					// value={}
-					onChange={e => setType(e.target.value)}
+					onChange={(e) => setType(e.target.value)}
 					required
 				>
 					<option>All</option>

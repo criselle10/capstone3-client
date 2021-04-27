@@ -1,0 +1,26 @@
+.categories {
+    color: white;
+    padding-top: 50px;
+}
+
+.addcategoryBtn {
+    width: 100px;
+    font-size: 17px;
+    height: 37px;
+    margin: 5px 0px 5px 0px;
+    letter-spacing: 1px;
+}
+
+.categoriesTableHead {
+    letter-spacing: 2px;
+    color: #FFD700;
+    font-size: 17px;
+}
+
+.catHeader {
+    width: 50%;
+}
+
+.cattableBody {
+    letter-spacing: 1px;
+}

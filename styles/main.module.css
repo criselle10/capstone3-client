@@ -9,24 +9,36 @@
 }
 
 .coin {
-    color: #ffd700;
+    color: #fbf702;
     display: inline;
-    margin: 30px;
-    font-size: 30px;
+    margin: 15px;
+    font-size: 32px;
+    height: 20vh;
+    text-shadow: 0px 1px 2px black;
 }
 
+/* .nav {
+    height: 8vh;
+    background: white;
+} */
+
 .navigation {
-    color: black !important;
-    font-size: 17px;
+    color: white !important;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .navigation:hover {
-    background: #ffd700;
+    background: #ffd700 !important;
+    color: black !important;
 }
 
-@media (min-width: 768px) {
-    .splitLeft, .splitRight { 
-      height: 100vh;
-
+@media screen and (max-width: 768px) {
+    .coin {
+        font-size: 25px;
+    }
+    .navcollapse {
+        color: white !important;
     }
 }
+

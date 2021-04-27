@@ -1,17 +1,18 @@
-import React, { useContext } from "react"
-import { Navbar, Nav } from "react-bootstrap"
-import Link from "next/link"
-import UserContext from "../UserContext"
-import styles from "../styles/main.module.css"
+import React, { useContext } from "react";
+import { Navbar, Nav } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import UserContext from "../UserContext";
+import styles from "../styles/main.module.css";
 
 export default function NaviBar() {
     const { user } = useContext(UserContext)
     return (
         <>
+            <div className={styles.nav}>        
             <Navbar expand="lg">
-            <Navbar.Brand href="/" ><h4 className={styles.coin}>[coin]</h4></Navbar.Brand>
+            <Navbar.Brand href="/" ><h4 className={styles.coin}>mnyTracker</h4></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" >
+            <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="justify-content-end" style={{ width: "100%"}}>
                     {
                         user.id !== null
@@ -26,12 +27,14 @@ export default function NaviBar() {
                         :
                         <React.Fragment>
                             <Nav.Link href="/login" className={styles.navigation}>Log In</Nav.Link>
-                            <Nav.Link href="/lgout" className={styles.navigation}>Register</Nav.Link>
+                            <Nav.Link href="/register" className={styles.navigation}>Register</Nav.Link>
+                            <Nav.Link href="/about" className={styles.navigation}>About</Nav.Link>
                         </React.Fragment>
                     }
                 </Nav>
             </Navbar.Collapse>
             </Navbar>
+            </div>
         </>
     )
 }

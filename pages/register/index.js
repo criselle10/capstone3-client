@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Router from 'next/router';
 import {Form, Button} from 'react-bootstrap'
 import Swal from 'sweetalert2';
+import styles from './register.module.css';
 
 export default function index(){
 
@@ -79,76 +80,81 @@ export default function index(){
 	}, [firstName, lastName, mobileNo, email, password1, password2]);
 
 	return(
-		<Form onSubmit={(e) => registerUser(e)}>
-			<Form.Group controlId = "firstName">
-				<Form.Label>First Name:</Form.Label>
-				<Form.Control
-					type="text"
-					placeholder="First Name"
-					value={firstName}
-					onChange={(e) => setFirstName(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			<Form.Group controlId = "lastName">
-				<Form.Label>Last Name:</Form.Label>
-				<Form.Control
-					type="text"
-					placeholder="Last Name"
-					value={lastName}
-					onChange={(e) => setLastName(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			<Form.Group controlId = "mobileNo">
-				<Form.Label>Mobile No:</Form.Label>
-				<Form.Control
-					type="number"
-					placeholder="Mobile No."
-					value={mobileNo}
-					onChange={(e) => setMobileNo(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			<Form.Group controlId = "userEmail">
-				<Form.Label>Email Address</Form.Label>
-				<Form.Control
-					type="email"
-					placeholder="Enter email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			<Form.Group controlId = "password1">
-				<Form.Label>Password</Form.Label>
-				<Form.Control
-					type="password"
-					placeholder="Password"
-					value={password1}
-					onChange={(e) => setPassword1(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			<Form.Group controlId = "password2">
-				<Form.Label>Verify Password</Form.Label>
-				<Form.Control
-					type="password"
-					placeholder="Verify Password"
-					value={password2}
-					onChange={(e) => setPassword2(e.target.value)}
-					required
-				/>
-			</Form.Group>
-			{isActive ? 
-			<Button variant="primary" type="submit" id="submitBtn">
-			Submit
-			</Button>
-			:
-			<Button variant="danger" type="submit" id="submitBtn" disabled>
-			Submit
-			</Button>
-			}
-		</Form>
+		<>
+			<Form onSubmit={(e) => registerUser(e)} className={styles.regform}>
+				<Form.Group controlId = "firstName">
+					<Form.Label className={styles.label}>First Name</Form.Label>
+					<Form.Control
+						type="text"
+						placeholder="First Name"
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				<Form.Group controlId = "lastName">
+					<Form.Label className={styles.label}>Last Name</Form.Label>
+					<Form.Control
+						type="text"
+						placeholder="Last Name"
+						value={lastName}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				<Form.Group controlId = "mobileNo">
+					<Form.Label className={styles.label}>Mobile No</Form.Label>
+					<Form.Control
+						type="number"
+						placeholder="Mobile No."
+						value={mobileNo}
+						onChange={(e) => setMobileNo(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				<Form.Group controlId = "userEmail">
+					<Form.Label className={styles.label}>Email Address</Form.Label>
+					<Form.Control
+						type="email"
+						placeholder="Enter email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				<Form.Group controlId = "password1">
+					<Form.Label className={styles.label}>Password</Form.Label>
+					<Form.Control
+						type="password"
+						placeholder="Password"
+						value={password1}
+						onChange={(e) => setPassword1(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				<Form.Group controlId = "password2">
+					<Form.Label className={styles.label}>Verify Password</Form.Label>
+					<Form.Control
+						type="password"
+						placeholder="Verify Password"
+						value={password2}
+						onChange={(e) => setPassword2(e.target.value)}
+						required
+					/>
+				</Form.Group>
+				{isActive ? 
+				<Button  type="submit" id="submitBtn" className={styles.regbutton}>
+				Submit
+				</Button>
+				:
+				<Button type="submit" id="submitBtn" disabled className={styles.regbutton}>
+				Submit
+				</Button>
+				}
+			</Form>
+			<footer className={styles.footer} fluid>
+				<p className={styles.mny}>mnyTracker</p> <p> &copy; All Rights Reserved</p>
+			</footer>
+		</>
 	)	
 }

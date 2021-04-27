@@ -3,6 +3,7 @@ import {Table, Button} from 'react-bootstrap';
 import UserContext from '../../UserContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
+import styles from './categories.module.css';
 
 export default function Categories() {
 
@@ -33,16 +34,16 @@ export default function Categories() {
 
 	return (
         <React.Fragment>
-            <h3 className='mt-4 mb-3' >Categories</h3>
-            <Button className='my-2' type='submit' variant='success' href='/categories/newCategory'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
+            <h3 className={styles.categories} >Categories</h3>
+            <Button className={styles.addcategoryBtn} type='submit' variant='success' href='/categories/newCategory'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
             <Table striped bordered hover variant="dark" >
-                <thead>
+                <thead className={styles.categoriesTableHead}>
                     <tr>
-                        <th>Category</th>
-                        <th>Type</th>
+                        <th className={styles.catHeader}>Category</th>
+                        <th className={styles.catHeader}>Type</th>
                     </tr>
                 </thead>     
-                <tbody>
+                <tbody className={styles.cattableBody}>
                     {listOfCategories}
                 </tbody>
             </Table>

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
 import {GoogleLogin} from 'react-google-login';
 import styles from './login.module.css';
+// import About from './about';
 
 export default function Login(){
 
@@ -148,71 +149,65 @@ export default function Login(){
     }
     
     return(
-        <div className="row">
-            <div className="col-md-6">
-                <div className={styles.splitLeft}>
-                    <div className={styles.centered}>
-                        <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
-                            <div className={styles.loginForm}>
-                                <Form.Group controlId="userEmail">
-                                    <Form.Label className={styles.label}>Email</Form.Label>
-                                    <Form.Control 
-                                        type = "email"
-                                        placeholder = "Email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                        className={styles.emailTextInput}
-                                    />
-                                </Form.Group>
-                                <Form.Group controlId="userPassword">
-                                    <Form.Label className={styles.label}>Password</Form.Label>
-                                    <Form.Control 
-                                        type = "password"
-                                        placeholder = "Password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        required
-                                        className={styles.emailTextInput}
-                                    />
-                                </Form.Group>
-                            </div>
-                            <div>
-                                { isActive ? 
-                                    <Button variant="primary" type="submit" id="submitBtn" className={styles.googleLogin}>
-                                    Submit
-                                    </Button>
-                                    :
-                                    <Button type="submit" id="submitBtn" className={styles.googleLogin} disabled>
-                                    Submit
-                                    </Button>
-                                }
-                                <GoogleLogin
-                                    // to use google login, you need a proper client id. 
-                                    clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
-                                    // mutable text in button, changeable text
-                                    buttonText = 'Login with Google'
-                                    // This is for us to run a function successfully
-                                    onSuccess = {authenticateGoogleToken}
-                                    // Function to run if not successful
-                                    onFailure = {authenticateGoogleToken}
-                                    cookiePolicy = {'single_host_origin'}
-                                    className={styles.googleLogin}  
-                                />
-                            </div>   
-                        </Form>
-                    </div>
+        <>
+            <div className="row no-gutters">
+                <div className="col-md-6">
+                    <h1 className={styles.header1}>Welcome to moneyTracker</h1>
+                    <img src='/015-money bag.png' alt='' className={styles.image} />
+                </div>
+                <div className="col-md-6">
+                    <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
+                        <Form.Group controlId="userEmail" className={styles.loginForm}>
+                            <Form.Label className={styles.emaillabel}>Email</Form.Label>
+                            <Form.Control 
+                                type = "email"
+                                placeholder = "Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className={styles.emailTextInput}
+                            />
+                            </Form.Group>
+                        <Form.Group controlId="userPassword" className={styles.loginForm}>
+                            <Form.Label className={styles.label}>Password</Form.Label>
+                            <Form.Control 
+                                type = "password"
+                                placeholder = "Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className={styles.emailTextInput}
+                            />
+                        </Form.Group>
+                        <div>
+                            { isActive ? 
+                                <Button type="submit" id="submitBtn" className={styles.googleLogin}>
+                                Submit
+                                </Button>
+                                :
+                                <Button type="submit" id="submitBtn" className={styles.googleLogin} disabled>
+                                Submit
+                                </Button>
+                            }
+                            <GoogleLogin
+                                // to use google login, you need a proper client id. 
+                                clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
+                                // mutable text in button, changeable text
+                                buttonText = 'Login with Google'
+                                // This is for us to run a function successfully
+                                onSuccess = {authenticateGoogleToken}
+                                // Function to run if not successful
+                                onFailure = {authenticateGoogleToken}
+                                cookiePolicy = {'single_host_origin'}
+                                className={styles.googlecustombtn}  
+                            />
+                        </div>   
+                    </Form>
                 </div>
             </div>
-
-            <div className="col-md-6">
-                <div className={styles.splitRight}>
-                    <div className={styles.centered}>
-                        <h1>Welcome to [coin]</h1>
-                        <img src='/015-money bag.png' alt='' className={styles.image} />
-                    </div>
-                </div>
-            </div>
-        </div>
+            <footer className={styles.footer} fluid>
+                <p>mnyTracker &copy; All Rights Reserved</p>
+            </footer>
+        </>
     )   
 }

@@ -1,0 +1,19 @@
+.about {
+    background: #fec8d8;
+    margin-top: 10vh;
+    margin-bottom: 100px;
+    border-radius: 10px;
+}
+
+.title {
+    color: yellow;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 0 30px 0;
+    text-shadow: 2px 2px black;
+}
+
+.about p {
+    color: #48306e;
+    
+}

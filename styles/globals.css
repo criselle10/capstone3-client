@@ -4,7 +4,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Fjalla One", sans-serif;
+    /* font-family: "Fjalla One", sans-serif; */
 }
 
 a {
@@ -13,6 +13,13 @@ a {
 }
 
 #root {
-    background: linear-gradient(to right, #294E5E 50%, white 50%);
-    height: 100vh;
+    /* background: linear-gradient(to right, #503380 50%, white 50%); */
+    background: #48306e;
+    height: 100%;
 }
+
+/* @media screen and (min-width: 768px){
+    #root {
+        height: 100%;
+    }
+} */

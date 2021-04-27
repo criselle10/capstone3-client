@@ -1,26 +1,105 @@
 .categories {
-    color: white;
+    color: blanchedalmond;
     padding-top: 50px;
+    padding-bottom: 30px;
+    text-align: center;
+    /* font-size: 35px; */
+    border-bottom: 2px solid;
 }
 
 .addcategoryBtn {
-    width: 100px;
+    width: 100%;
     font-size: 17px;
-    height: 37px;
-    margin: 5px 0px 5px 0px;
+    height: 40px;
+    margin: 30px 0px 20px 0px;
     letter-spacing: 1px;
+    background: #fec8d8;
+    border: 1px solid #48306e;
+    color: black;
+    box-shadow: 1px 1px 3px ;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+.addcategoryBtn:hover {
+    background: #f09cb5 !important;
+    color: black !important;
+    font-weight: 500 !important;
+    border: 1px solid #48306e;
 }
 
 .categoriesTableHead {
     letter-spacing: 2px;
     color: #FFD700;
     font-size: 17px;
+    background: transparent !important;
 }
 
 .catHeader {
-    width: 50%;
+    width: 300px;
+    font-size: 20px;
 }
 
 .cattableBody {
     letter-spacing: 1px;
+    color: white;
+    border: 2px solid yellow !important;
+    width: 50%;
+    font-size: 18px;
+}
+
+.tableborder {
+    border: 2px solid yellow;
+}
+
+.categoriesbody {
+    height: 100vh;
+}
+
+@media only screen and (max-width: 768px){
+    .categoriesbody {
+        height: 100vh;
+    }
+}
+
+.newCategoryBody {
+    height: 100vh;
+}
+
+.newCategory {
+    color: blanchedalmond;
+    text-align: center;
+    border-bottom: 2px solid;
+    padding: 50px 0 30px 0;
+}
+
+.cardBody {
+    margin-top: 50px;
+}
+
+.label1, 
+.label2 {
+    font-size: 18px;
+    color: #48306e;
+    font-weight: 500;
+}
+
+.addButton {
+    width: 100%;
+    margin: 20px 0 15px 0;
+    background: #fec8d8;
+    border: 1px solid white;
+    border-radius: 50px;
+    font-size: 17px;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
+    box-shadow: 1px 1px 2px #48306e;
+}
+
+.addButton:hover {
+    background: #f09cb5 !important;
+    color: black !important;
+    font-weight: 500 !important;
+    border: 1px solid white;
 }

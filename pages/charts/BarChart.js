@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Bar} from 'react-chartjs-2';
 import moment from 'moment';
-
+import styles from './charts.module.css';
 
 export default function BarChart({rawData, typeData, colorData, hoverBackgroundColorData}){
 
@@ -42,7 +42,7 @@ export default function BarChart({rawData, typeData, colorData, hoverBackgroundC
 			backgroundColor: `${colorData}`,
 			borderColor: 'white',
 			borderWidth: 1,
-			// hoverBackgroundColor: `${hoverBackgroundColorData}`,
+			hoverBackgroundColor: `${hoverBackgroundColorData}`,
 			hoverBorderColor: '#454747',
 			data: budgetPerMonth
 		}]
@@ -58,8 +58,10 @@ export default function BarChart({rawData, typeData, colorData, hoverBackgroundC
 
 	return(
 		<React.Fragment>
-			<h1>Monthly {typeData}(Php)</h1>
-			<Bar data={data} options={options}/>
+			<h1 className={styles.charts}>Monthly {typeData} - Peso</h1>
+			<div className={styles.barChart}>
+				<Bar data={data} options={options}/>
+			</div>
 		</React.Fragment>
 	)
 }

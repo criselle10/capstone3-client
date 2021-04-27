@@ -6,14 +6,97 @@
 }
 
 .title {
-    color: yellow;
+    border-top: 2px solid black;
+    color: #48306e;
     display: flex;
-    justify-content: flex-start;
-    padding: 20px 0 30px 0;
-    text-shadow: 2px 2px black;
+    justify-content: center;
+    padding: 30px 0 30px 0;
+    font-weight: 600;
 }
 
 .about p {
     color: #48306e;
-    
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.footer {
+    width: 100%;
+    /* height: 100px; */
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 23px;
+    color: white;
+}
+
+.footer > .mny {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fbf702;
+}
+
+.footer p {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.picture {
+    height: 180px !important;
+    width: 180px !important;
+    filter: grayscale();
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #48306e;
+    position: absolute;
+    padding: 8px ;
+    margin-left: 40.5%;
+}
+
+.devpic {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.myname {
+    margin-top: 25.5vh;
+    text-align: center;
+    font-size: 22px;
+}
+
+.mytitle {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px){
+    .picture {
+        margin-left: 30%;
+        height: 150px !important;
+        width: 150px !important;
+        margin-top: 30px;
+    }
+    .title {
+        font-size: 25px;
+        margin: 0 10px 0 10px;
+    }
+    .abouttext {
+        font-size: 15px;
+        margin: 0 10px 0 10px;
+        line-height: 20px;
+    }
+    .myname {
+        font-size: 19px;
+        margin-top: 25.5vh;
+    }
+    .mytitle {
+        font-size: 15px;
+        line-height: 7px;
+    }
+    .about {
+        margin: 5vh 10px 50px 10px;
+        background: #fec8d8;
+        border-radius: 10px;
+    }
 }

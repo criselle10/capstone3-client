@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
-import {Form, Button, Card} from 'react-bootstrap';
+import {Form, Button, Card, Row, Col} from 'react-bootstrap';
 import Router from 'next/router';
-import styles from '../../styles/main.module.css';
+import styles from './records.module.css';
 
 export default function AddRecord(){
     
@@ -143,51 +143,55 @@ export default function AddRecord(){
 
     return (
         <React.Fragment>
-            <h4 className='mt-5 mb-3'>New Record</h4>
-            <Card>
-                <Card.Body>
-                    <Form onSubmit={ e => addRecord(e)}>
-                        <Form.Group controlId="type">
-                            <Form.Label>Category Type:</Form.Label>
-                            <Form.Control as="select" value={type} onChange={(e) => setType(e.target.value)} required>
-                                <option disabled value=''>Select Category Type</option>
-                                <option>Income</option>
-                                <option>Expense</option>
-                            </Form.Control>
-                        </Form.Group>
-                        <Form.Group controlId="name">
-                            <Form.Label>Category Name:</Form.Label>
-                            <Form.Control as="select" value={name} onChange={(e) => setName(e.target.value)} required>
-                                <option disabled value=''>Select Category Name</option>
-                                {displayCategory}
-                            </Form.Control>
-                        </Form.Group>
-                        <Form.Group controlId="amount">
-                            <Form.Label>Amount:</Form.Label>
-                            <Form.Control 
-                                type="number"
-                                value={amount}
-                                onChange={(e) => setAmount(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="description">
-                            <Form.Label>Description:</Form.Label>
-                            <Form.Control 
-                                type="text"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        {
-                            isActive
-                            ? <Button type='submit'>Submit</Button>
-                            : <Button type='submit' disabled>Submit</Button>
-                        }
-                    </Form>
-                </Card.Body>
-            </Card>
+            <div className={styles.newRecordBody}>
+                <h1 className={styles.newReord}>[ New Record ]</h1>
+                <Card className={styles.addRecordForm}>
+                    <Card.Body>
+                        <Form onSubmit={ e => addRecord(e)}>
+                            <Form.Row>
+                                <Form.Group as={Col} controlId="type">
+                                    <Form.Label className={styles.label}>Category Type:</Form.Label>
+                                    <Form.Control as="select" value={type} onChange={(e) => setType(e.target.value)} required>
+                                        <option disabled value=''>Select Category Type</option>
+                                        <option>Income</option>
+                                        <option>Expense</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                <Form.Group as={Col} controlId="name">
+                                    <Form.Label className={styles.label}>Category Name:</Form.Label>
+                                    <Form.Control as="select" value={name} onChange={(e) => setName(e.target.value)} required>
+                                        <option disabled value=''>Select Category Name</option>
+                                        {displayCategory}
+                                    </Form.Control>
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Group controlId="amount">
+                                <Form.Label className={styles.label}>Amount:</Form.Label>
+                                <Form.Control 
+                                    type="number"
+                                    value={amount}
+                                    onChange={(e) => setAmount(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="description">
+                                <Form.Label className={styles.label}>Description:</Form.Label>
+                                <Form.Control 
+                                    type="text"
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+                            {
+                                isActive
+                                ? <Button type='submit' className={styles.recordButton}>Submit</Button>
+                                : <Button type='submit' disabled className={styles.recordButton}>Submit</Button>
+                            }
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </div>
         </React.Fragment>
     )
 }

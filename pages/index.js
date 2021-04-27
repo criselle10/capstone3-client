@@ -16,9 +16,9 @@ export default function Home(props) {
                 <img src='/coin.png' className={styles.coinimage}></img>
             </main>
 
-            <footer className={styles.footer} fluid>
-                <p>mnyTracker &copy; All Rights Reserved</p>
-            </footer>
+            <footer className={styles.footer} fluid='true'>
+				<p className={styles.mny}>mnyTracker</p> <p> &copy; 2021 All Rights Reserved</p>
+			</footer>
         </div>
     )
 }

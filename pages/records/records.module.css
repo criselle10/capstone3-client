@@ -1,0 +1,87 @@
+.records {
+    color: blanchedalmond;
+    text-align: center;
+    border-bottom: 2px solid;
+    width: 100%;
+    padding: 60px 0 30px 0;
+}
+
+.computation {
+    margin: 30px 0 30px 0;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    color: blanchedalmond;
+    display: flex;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.computation h5 {
+    font-size: 22px;
+    border-bottom: 1px solid #fbf702;
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.newRecordButten {
+    width: 150px;
+    background: #48306e;
+    border: 1px solid white;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    height: 37.6px;
+}
+
+.newRecordButten:hover {
+    background: #fec8d8 !important;
+    color: black !important;
+}
+
+.recordbody {
+    padding-bottom: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .recordbody {
+        height: 100%;
+    }
+}
+
+.newRecordBody {
+    height: 100vh;
+}
+
+.newReord {
+    color: blanchedalmond;
+    text-align: center;
+    border-bottom: 2px solid;
+    width: 100%;
+    padding: 60px 0 30px 0;
+}
+
+.addRecordForm {
+    margin-top: 40px;
+}
+
+.label {
+    color: #48306e;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.recordButton {
+    width: 100%;
+    border-radius: 50px;
+    background:#48306e !important;
+    color: blanchedalmond !important;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 18px;
+    border: none;
+}
+
+.recordButton:hover {
+    background:#48306e !important;
+    color: blanchedalmond !important;
+}

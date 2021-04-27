@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import Router from 'next/router';
 import BarChart from './BarChart.js';
 import moment from 'moment';
-
+import styles from './charts.module.css';
 
 export default function Expense(){
 	const [allRecords, setAllRecords] = useState([]);

@@ -34,19 +34,21 @@ export default function Categories() {
 
 	return (
         <React.Fragment>
-            <h3 className={styles.categories} >Categories</h3>
-            <Button className={styles.addcategoryBtn} type='submit' variant='success' href='/categories/newCategory'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
-            <Table striped bordered hover variant="dark" >
-                <thead className={styles.categoriesTableHead}>
-                    <tr>
-                        <th className={styles.catHeader}>Category</th>
-                        <th className={styles.catHeader}>Type</th>
-                    </tr>
-                </thead>     
-                <tbody className={styles.cattableBody}>
-                    {listOfCategories}
-                </tbody>
-            </Table>
+            <div className={styles.categoriesbody}>
+                <h1 className={styles.categories} >[ Categories ]</h1>
+                <Button className={styles.addcategoryBtn} type='submit' variant='success' href='/categories/newCategory'> <FontAwesomeIcon icon={faPlus} /> New Category </Button>
+                <Table className={styles.tableborder}>
+                    <thead className={styles.categoriesTableHead}>
+                        <tr>
+                            <th className={styles.catHeader}>Category</th>
+                            <th className={styles.catHeader}>Type</th>
+                        </tr>
+                    </thead>     
+                    <tbody className={styles.cattableBody}>
+                        {listOfCategories}
+                    </tbody>
+                </Table>
+            </div>
         </React.Fragment>       
 	);
 }

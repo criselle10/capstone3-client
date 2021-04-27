@@ -161,8 +161,8 @@ export default function index(){
 				</Button>
 				}
 			</Form>
-			<footer className={styles.footer} fluid>
-				<p className={styles.mny}>mnyTracker</p> <p> &copy; All Rights Reserved</p>
+			<footer className={styles.footer} fluid='true'>
+				<p className={styles.mny}>mnyTracker</p> <p> &copy; 2021 All Rights Reserved</p>
 			</footer>
 		</>
 	)	

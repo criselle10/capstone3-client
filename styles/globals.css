@@ -13,13 +13,13 @@ a {
 }
 
 #root {
-    /* background: linear-gradient(to right, #503380 50%, white 50%); */
     background: #48306e;
     height: 100%;
 }
 
-/* @media screen and (min-width: 768px){
+@media only screen and (max-width: 768px) {
     #root {
         height: 100%;
     }
-} */
+}
+

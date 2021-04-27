@@ -22,14 +22,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 28px;
+    padding-top: 23px;
     color: white;
+}
+
+.footer > .mny {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fbf702;
 }
 
 .footer p {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;  
 }
 
 .title span {

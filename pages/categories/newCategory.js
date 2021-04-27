@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import {Form, Button, Card} from 'react-bootstrap';
 import Router from 'next/router';
+import styles from './categories.module.css';
 
 export default function AddCategory(){
     
@@ -59,32 +60,34 @@ export default function AddCategory(){
 
     return (
         <React.Fragment>
-            <h1 className='my-5'>New Category</h1>
-            <Card>
-                <Card.Body>
-                    <Form onSubmit={ e => addCategory(e)}>
-                        <Form.Group controlId="name">
-                            <Form.Label>Category Name:</Form.Label>
-                            <Form.Control 
-                                type="text"
-                                placeholder="Enter Category Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="type">
-                            <Form.Label>Category Type:</Form.Label>
-                            <Form.Control as="select" value={type} onChange={(e) => setType(e.target.value)} required>
-                                <option disabled value=''>Select Category Type</option>
-                                <option>Income</option>
-                                <option>Expense</option>
-                            </Form.Control>
-                        </Form.Group>
-                        <Button type='submit' variant='primary'>Submit</Button>
-                    </Form>
-                </Card.Body>
-            </Card>
+            <div className={styles.newCategoryBody}>
+                <h1 className={styles.newCategory}>[ New Category ]</h1>
+                <Card className={styles.cardBody}>
+                    <Card.Body>
+                        <Form onSubmit={ e => addCategory(e)}>
+                            <Form.Group controlId="name">
+                                <Form.Label className={styles.label1}>Category Name:</Form.Label>
+                                <Form.Control 
+                                    type="text"
+                                    placeholder="Enter Category Name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+                            <Form.Group controlId="type">
+                                <Form.Label className={styles.label2}>Category Type:</Form.Label>
+                                <Form.Control as="select" value={type} onChange={(e) => setType(e.target.value)} required>
+                                    <option disabled value=''>Select Category Type</option>
+                                    <option>Income</option>
+                                    <option>Expense</option>
+                                </Form.Control>
+                            </Form.Group>
+                            <Button type='submit' className={styles.addButton}>Submit</Button>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </div>
         </React.Fragment>
     )
 }

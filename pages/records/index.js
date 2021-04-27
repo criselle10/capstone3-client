@@ -2,6 +2,7 @@ import React, { useEffect, useState,  useContext } from "react";
 import {Card, Button, InputGroup, FormControl, Form, Row, Col} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus} from '@fortawesome/free-solid-svg-icons';
+import styles from './records.module.css';
 
 export default function Records() {
 
@@ -251,56 +252,58 @@ export default function Records() {
 
 	return (
         <React.Fragment>
-			<div className='row' >
-				<h3 className='col-md-12 col-lg-6 my-4'>Records</h3>
-			</div>
-			<div className='row text-center mb-4'>
-				<div className='col-4'>
-					<h5>Total Income: {income.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+			<div className={styles.recordbody}>
+				<div className='row' >
+					<h1 className={styles.records}>[ Records ]</h1>
 				</div>
-				<div className='col-4'>
-					<h5>Total Expense: {expense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>	
-				</div>	
-				<div className='col-4'>
-					<h5>Current Savings: {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+				<div className={styles.computation}>
+					<div className='col-4'>
+						<h5>Total Income: {income.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+					</div>
+					<div className='col-4'>
+						<h5>Total Expense: {expense.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>	
+					</div>	
+					<div className='col-4'>
+						<h5>Current Savings: {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
+					</div>
 				</div>
+				<InputGroup>
+					<InputGroup.Prepend>
+						<Button type="submit" className={styles.newRecordButten} href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> New Record </Button>
+					</InputGroup.Prepend>
+					<FormControl
+						type="text"
+						placeholder="Search Record"
+						value={search}
+						onChange={(e) => setSearch(e.target.value)}
+					/>
+					
+					<Form.Control
+						as="select"
+						onChange={(e) => setType(e.target.value)}
+						required
+					>
+						<option>All</option>
+						<option>Income</option>
+						<option>Expense</option>
+					</Form.Control>
+				</InputGroup>
+				{	
+					search !== ''
+					?
+					allSearch
+					:
+					type == 'All'
+					?
+						aTransaction
+					:
+					type == 'Income'
+					?
+						listOfIncome
+					:
+						listOfExpense
+				}
 			</div>
-			<InputGroup>
-				<InputGroup.Prepend>
-                <Button type="submit" variant="primary	" href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> Add </Button>
-				</InputGroup.Prepend>
-				<FormControl
-					type="text"
-					placeholder="Search Record"
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
-				
-				<Form.Control
-					as="select"
-					onChange={(e) => setType(e.target.value)}
-					required
-				>
-					<option>All</option>
-					<option>Income</option>
-					<option>Expense</option>
-				</Form.Control>
-			</InputGroup>
-			{	
-				search !== ''
-				?
-				allSearch
-				:
-				type == 'All'
-				?
-					aTransaction
-				:
-				type == 'Income'
-				?
-					listOfIncome
-				:
-					listOfExpense
-			}
 		</React.Fragment>       
 	);
 }

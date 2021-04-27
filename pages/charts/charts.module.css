@@ -1,0 +1,11 @@
+.charts {
+    color: blanchedalmond;
+    text-align: center;
+    border-bottom: 2px solid;
+    width: 100%;
+    padding: 60px 0 30px 0;
+}
+
+.barChart {
+    margin-top: 50px;
+}

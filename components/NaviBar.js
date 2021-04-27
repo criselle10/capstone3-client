@@ -18,6 +18,7 @@ export default function NaviBar() {
                         user.id !== null
                         ?
                         <React.Fragment>
+                            <Nav.Link href="/profile" className={styles.navigation}>Profile</Nav.Link>
                             <Nav.Link href="/categories" className={styles.navigation}>Categories</Nav.Link>
                             <Nav.Link href="/records" className={styles.navigation}>Records</Nav.Link>
                             <Nav.Link href="/charts/monthly-expense" className={styles.navigation}>Monthly Expense</Nav.Link>

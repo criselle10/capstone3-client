@@ -1,11 +1,10 @@
 import React,{useState,useEffect,useContext} from 'react';
 import Router from 'next/router';
-import {Form,Button} from 'react-bootstrap';
+import {Form,Button,Alert} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import UserContext from '../../UserContext';
 import {GoogleLogin} from 'react-google-login';
 import styles from './login.module.css';
-// import About from './about';
 
 export default function Login(){
 
@@ -54,7 +53,7 @@ export default function Login(){
                 Swal.fire({
                     icon: 'success',
                     title: 'Successfully logged in',
-                    text: 'Thank you for logging in.'
+                    text: 'Thank you for logging in.',
                 })
 
                 Router.push('/categories')
@@ -206,9 +205,9 @@ export default function Login(){
                     </Form>
                 </div>
             </div>
-            <footer className={styles.footer} fluid>
-                <p>mnyTracker &copy; All Rights Reserved</p>
-            </footer>
+            <footer className={styles.footer} fluid='true'>
+				<p className={styles.mny}>mnyTracker</p> <p> &copy; 2021 All Rights Reserved</p>
+			</footer>
         </>
     )   
 }

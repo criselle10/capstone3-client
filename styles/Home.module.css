@@ -58,12 +58,19 @@
     height: 1em;
 }
 
+.coinimage {
+    height: 220px;
+    width: 220px;
+    margin-top: 50px;
+}
+
 @media (max-width: 600px) {
-    /* .grid {
-      width: 100%;
-      flex-direction: column;
-    } */
     .title {
-        font-size: 45px;
+        font-size: 42px;
+    }
+    .coinimage {
+        height: 190px;
+        width: 190px;
+        margin-top: 30px;
     }
 }

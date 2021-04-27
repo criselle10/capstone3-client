@@ -152,7 +152,7 @@ export default function Login(){
         <>
             <div className="row no-gutters">
                 <div className="col-md-6">
-                    <h1 className={styles.header1}>Welcome to moneyTracker</h1>
+                    <h1 className={styles.header1}>Track your money...</h1>
                     <img src='/015-money bag.png' alt='' className={styles.image} />
                 </div>
                 <div className="col-md-6">
@@ -167,7 +167,8 @@ export default function Login(){
                                 required
                                 className={styles.emailTextInput}
                             />
-                            </Form.Group>
+                        </Form.Group>
+
                         <Form.Group controlId="userPassword" className={styles.loginForm}>
                             <Form.Label className={styles.label}>Password</Form.Label>
                             <Form.Control 

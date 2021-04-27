@@ -13,6 +13,7 @@ export default function Home(props) {
                 <h1 className={styles.title}>
                     Welcome to <span>moneyTracker</span>
                 </h1>
+                <img src='/coin.png' className={styles.coinimage}></img>
             </main>
 
             <footer className={styles.footer} fluid>

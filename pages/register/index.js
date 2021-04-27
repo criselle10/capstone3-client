@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Router from 'next/router';
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button, Row, Col} from 'react-bootstrap'
 import Swal from 'sweetalert2';
 import styles from './register.module.css';
 
@@ -90,6 +90,7 @@ export default function index(){
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
 						required
+						className={styles.inputtext}
 					/>
 				</Form.Group>
 				<Form.Group controlId = "lastName">
@@ -100,6 +101,7 @@ export default function index(){
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 						required
+						className={styles.inputtext}
 					/>
 				</Form.Group>
 				<Form.Group controlId = "mobileNo">
@@ -110,6 +112,7 @@ export default function index(){
 						value={mobileNo}
 						onChange={(e) => setMobileNo(e.target.value)}
 						required
+						className={styles.inputtext}
 					/>
 				</Form.Group>
 				<Form.Group controlId = "userEmail">
@@ -120,34 +123,40 @@ export default function index(){
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						className={styles.inputtext}
 					/>
 				</Form.Group>
-				<Form.Group controlId = "password1">
-					<Form.Label className={styles.label}>Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Password"
-						value={password1}
-						onChange={(e) => setPassword1(e.target.value)}
-						required
-					/>
-				</Form.Group>
-				<Form.Group controlId = "password2">
-					<Form.Label className={styles.label}>Verify Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Verify Password"
-						value={password2}
-						onChange={(e) => setPassword2(e.target.value)}
-						required
-					/>
-				</Form.Group>
+				
+				<Form.Row>
+					<Form.Group as={Col} controlId = "password1">
+						<Form.Label className={styles.label}>Password</Form.Label>
+						<Form.Control
+							type="password"
+							placeholder="Password"
+							value={password1}
+							onChange={(e) => setPassword1(e.target.value)}
+							required
+							className={styles.inputtext}
+						/>
+					</Form.Group>
+					<Form.Group as={Col} controlId = "password2">
+						<Form.Label className={styles.label}>Verify Password</Form.Label>
+						<Form.Control
+							type="password"
+							placeholder="Verify Password"
+							value={password2}
+							onChange={(e) => setPassword2(e.target.value)}
+							required
+							className={styles.inputtext}
+						/>
+					</Form.Group>
+				</Form.Row>
 				{isActive ? 
-				<Button  type="submit" id="submitBtn" className={styles.regbutton}>
+				<Button variant="warning"  type="submit" id="submitBtn" className={styles.regbutton}>
 				Submit
 				</Button>
 				:
-				<Button type="submit" id="submitBtn" disabled className={styles.regbutton}>
+				<Button variant="warning" type="submit" id="submitBtn" disabled className={styles.regbutton}>
 				Submit
 				</Button>
 				}

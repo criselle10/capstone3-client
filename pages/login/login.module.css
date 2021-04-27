@@ -10,6 +10,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
+    margin-bottom: 18.3vh;
 }
 
 .loginForm {
@@ -40,7 +41,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 320px;
-    height: 50vh;
+    height: 45vh;
 }
 
 .header1 {
@@ -95,7 +96,7 @@
         margin-top: 30px;
     }
     .login {
-        margin-top: 70px;
+        margin-top: 56px;
         height: 350px;
         box-shadow: 7px 7px 7px black;
         margin-bottom: 80px;
@@ -114,5 +115,8 @@
     .googlecustombtn {
         border: 1px solid grey !important;
         height: fit-content;
+    }
+    .image {
+        display: none;
     }
 }

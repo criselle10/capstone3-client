@@ -15,3 +15,13 @@ div.card-body {
 .incomeBody {
     height: 100vh !important;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .charts {
+        font-size: 18px;
+        padding: 3px 0 15px 0;
+    }
+    .labels {
+        font-size: 15px;
+    }
+}

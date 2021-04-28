@@ -49,8 +49,8 @@
     .coin {
         font-size: 25px;
     }
-    .navcollapse {
-        color: white !important;
+    .navigation {
+        font-size: 15px;
     }
 }
 

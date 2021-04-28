@@ -53,7 +53,7 @@ export default function Income(){
 				<div className='col-lg-12 col-md-10  my-5'>
 					<div className="card">
 						<div className="card-body" id={styles.cardbody}>
-							<BarChart rawData={allRecords} typeData='Income' colorData='#fcfb04' hoverBackgroundColorData='#ffc404'/>
+							<BarChart rawData={allRecords} typeData='Income' colorData='#e7b7c8' hoverBackgroundColorData='#cdb3d4'/>
 						</div>
 					</div>
 				</div>

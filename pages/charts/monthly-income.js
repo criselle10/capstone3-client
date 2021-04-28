@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import Router from 'next/router';
 import BarChart from './BarChart.js';
 import moment from 'moment';
-
+import styles from './charts.module.css';
 
 export default function Income(){
 	const [allRecords, setAllRecords] = useState([]);
@@ -49,7 +49,15 @@ export default function Income(){
 
 	return (
 		<React.Fragment>
-			<BarChart rawData={allRecords} typeData='Income' colorData='#72a5b8' hoverBackgroundColorData='pink'/>
+			<div className={styles.incomeBody}>
+				<div className='col-lg-12 col-md-10  my-5'>
+					<div className="card">
+						<div className="card-body" id={styles.cardbody}>
+							<BarChart rawData={allRecords} typeData='Income' colorData='#fcfb04' hoverBackgroundColorData='#ffc404'/>
+						</div>
+					</div>
+				</div>
+			</div>
 		</React.Fragment>
     )
 }

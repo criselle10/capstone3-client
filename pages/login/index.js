@@ -149,65 +149,67 @@ export default function Login(){
     
     return(
         <>
-            <div className="row no-gutters">
-                <div className="col-md-6">
-                    <h1 className={styles.header1}>Track your money...</h1>
-                    <img src='/015-money bag.png' alt='' className={styles.image} />
-                </div>
-                <div className="col-md-6">
-                    <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
-                        <Form.Group controlId="userEmail" className={styles.loginForm}>
-                            <Form.Label className={styles.emaillabel}>Email</Form.Label>
-                            <Form.Control 
-                                type = "email"
-                                placeholder = "Email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                                className={styles.emailTextInput}
-                            />
-                        </Form.Group>
+            <div className={styles.loginBody}>
+                <div className="row no-gutters">
+                    <div className="col-md-6">
+                        <h1 className={styles.header1}>Track your money...</h1>
+                        <img src='/015-money bag.png' alt='' className={styles.image} />
+                    </div>
+                    <div className="col-md-6">
+                        <Form onSubmit={(e) => loginUser(e)} className={styles.login}>
+                            <Form.Group controlId="userEmail" className={styles.loginForm}>
+                                <Form.Label className={styles.emaillabel}>Email</Form.Label>
+                                <Form.Control 
+                                    type = "email"
+                                    placeholder = "Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                    className={styles.emailTextInput}
+                                />
+                            </Form.Group>
 
-                        <Form.Group controlId="userPassword" className={styles.loginForm}>
-                            <Form.Label className={styles.label}>Password</Form.Label>
-                            <Form.Control 
-                                type = "password"
-                                placeholder = "Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                                className={styles.emailTextInput}
-                            />
-                        </Form.Group>
-                        <div>
-                            { isActive ? 
-                                <Button type="submit" id="submitBtn" className={styles.googleLogin}>
-                                Submit
-                                </Button>
-                                :
-                                <Button type="submit" id="submitBtn" className={styles.googleLogin} disabled>
-                                Submit
-                                </Button>
-                            }
-                            <GoogleLogin
-                                // to use google login, you need a proper client id. 
-                                clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
-                                // mutable text in button, changeable text
-                                buttonText = 'Login with Google'
-                                // This is for us to run a function successfully
-                                onSuccess = {authenticateGoogleToken}
-                                // Function to run if not successful
-                                onFailure = {authenticateGoogleToken}
-                                cookiePolicy = {'single_host_origin'}
-                                className={styles.googlecustombtn}  
-                            />
-                        </div>   
-                    </Form>
+                            <Form.Group controlId="userPassword" className={styles.loginForm}>
+                                <Form.Label className={styles.label}>Password</Form.Label>
+                                <Form.Control 
+                                    type = "password"
+                                    placeholder = "Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                    className={styles.emailTextInput}
+                                />
+                            </Form.Group>
+                            <div>
+                                { isActive ? 
+                                    <Button type="submit" id="submitBtn" className={styles.googleLogin}>
+                                    Submit
+                                    </Button>
+                                    :
+                                    <Button type="submit" id="submitBtn" className={styles.googleLogin} disabled>
+                                    Submit
+                                    </Button>
+                                }
+                                <GoogleLogin
+                                    // to use google login, you need a proper client id. 
+                                    clientId = '474495930535-48qnv1b69juke6b8v2kt83if30i24l19.apps.googleusercontent.com'
+                                    // mutable text in button, changeable text
+                                    buttonText = 'Login with Google'
+                                    // This is for us to run a function successfully
+                                    onSuccess = {authenticateGoogleToken}
+                                    // Function to run if not successful
+                                    onFailure = {authenticateGoogleToken}
+                                    cookiePolicy = {'single_host_origin'}
+                                    className={styles.googlecustombtn}  
+                                />
+                            </div>   
+                        </Form>
+                    </div>
                 </div>
+                <footer className={styles.footer} fluid='true'>
+                    <p className={styles.mny}>mnyTracker</p> <p> &copy; 2021 All Rights Reserved</p>
+                </footer>
             </div>
-            <footer className={styles.footer} fluid='true'>
-				<p className={styles.mny}>mnyTracker</p> <p> &copy; 2021 All Rights Reserved</p>
-			</footer>
         </>
     )   
 }

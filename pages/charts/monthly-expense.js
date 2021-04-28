@@ -48,8 +48,16 @@ export default function Expense(){
 	}, [])
 
 	return (
-		<React.Fragment>
-			<BarChart rawData={allRecords} typeData='Expense' colorData='#ba7b8e' hoverBackgroundColorData='lightblue'/>
-		</React.Fragment>
+		<>
+			<div className={styles.expenseBody}>
+				<div className='col-lg-12 col-md-10  my-5'>
+					<div className="card">
+						<div className="card-body" id={styles.cardbody}>
+							<BarChart rawData={allRecords} typeData='Expense' colorData='#d4bfe9' hoverBackgroundColorData='#957DAD'/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
     )
 }

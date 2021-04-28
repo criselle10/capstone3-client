@@ -59,9 +59,7 @@ export default function BarChart({rawData, typeData, colorData, hoverBackgroundC
 	return(
 		<React.Fragment>
 			<h1 className={styles.charts}>Monthly {typeData} - Peso</h1>
-			<div className={styles.barChart}>
-				<Bar data={data} options={options}/>
-			</div>
+			<Bar data={data} options={options}/>
 		</React.Fragment>
 	)
 }

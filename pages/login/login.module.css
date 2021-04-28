@@ -21,6 +21,8 @@
 
 .label {
     margin: 0;
+    color: #48306e;
+    font-weight: 500;
 }
 
 .emailTextInput {
@@ -53,6 +55,8 @@
 
 .emaillabel {
     padding-top: 32px;
+    color: #48306e;
+    font-weight: 500;
 }
 
 .googlecustombtn {
@@ -108,6 +112,7 @@
         box-shadow: 7px 7px 7px black;
         margin-bottom: 80px;
         background: white;
+        width: 70%;
     }
     .emaillabel {
         padding-top: 22px;
@@ -126,4 +131,52 @@
     .image {
         display: none;
     }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)  {
+    /* .loginBody {
+        height: 92.5vh;
+    } */
+    .header1 {
+        font-size: 25px;
+    }
+    .login {
+        margin-top: 55px;
+        height: 350px;
+        box-shadow: 7px 7px 7px black;
+        margin-bottom: 80px;
+        background: white;
+        width: 75%;
+    }
+    .emaillabel {
+        padding-top: 22px;
+        color: black;
+    }
+    .label {
+        color: black;
+    }
+    .emailTextInput {
+        border: 1px solid transparent;
+        border-bottom: 2px solid #48306e ;
+        border-radius: 8px;
+    }
+    .googlecustombtn {
+        border: 1px solid transparent !important;
+        height: fit-content;
+        width: 80%;
+        border-bottom: 1px solid #48306e !important;
+        border-radius: 50px !important;
+    }
+    .image {
+        display: none;
+    }
+    .googleLogin {
+        width: 80%;
+        border-radius: 50px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    .footer {
+        font-size: 13.5px;
+    }   
 }

@@ -6,13 +6,11 @@ export default function About(){
     return (
         <>
             <Jumbotron className={styles.about}>
-                <Form.Row>
-                    <Form.Group as={Col} className={styles.devpic}>
-                        <img src='/crisel.jpg' alt="me" className={styles.picture} />
-                        <h4 className={styles.myname}>Criselle A. Albor</h4>
-                        <h6 className={styles.mytitle}>Full Stack Developer</h6>
-					</Form.Group>
-				</Form.Row>
+                <div className={styles.picture}>
+                    <img src='/crisel.jpg' alt="me" class="rounded mx-auto d-block" />
+                </div>
+                <h4 className={styles.myname}>Criselle A. Albor</h4>
+                <h6 className={styles.mytitle}>Full Stack Developer</h6>
                 <h1 className={styles.title}>-- MNY Tracker --</h1>
                 <div className={styles.abouttext}>
 

@@ -81,3 +81,17 @@
         margin-top: 30px;
     }
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .title {
+        font-size: 35px;
+    }
+    .coinimage {
+        height: 170px;
+        width: 170px;
+        margin-top: 30px;
+    }
+    .footer {
+        font-size: 13.5px;
+    }
+}

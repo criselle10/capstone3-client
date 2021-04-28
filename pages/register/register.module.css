@@ -1,5 +1,5 @@
 .regform {
-    margin: 80px 40px 90px 40px;
+    margin: 80px 30px 80px 30px;
     box-shadow: 5px 5px 10px black;
     padding: 50px;
     border-radius: 10px;
@@ -47,9 +47,9 @@
     align-items: center;  
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .regbutton {
-        width: 100%;
+        width: 100% ;
     }
     .label {
         font-size: 15px;
@@ -59,8 +59,32 @@
         margin: 20px 0 0 0;
     }
     .inputtext {
-        height: 33px;
+        height: 35px;
         font-size: 13px;
         border-radius: 20px;
+    }
+}
+
+/* @media (min-device-width : 320px) and (max-device-width : 480px) {
+    .regform {
+        width: 85%;
+        padding: 20px;
+        border-bottom: 2px solid #48306e !important;
+
+    }
+    .footer {
+        font-size: 13.5px;
+    }
+} */
+
+@media (max-width: 575.98px) {
+    .regform {
+        width: 85%;
+        padding: 20px;
+        border-bottom: 2px solid #48306e !important;
+
+    }
+    .footer {
+        font-size: 13.5px;
     }
 }

@@ -171,7 +171,7 @@ export default function AddRecord(){
                                     type="number"
                                     value={amount}
                                     onChange={(e) => setAmount(e.target.value)}
-                                    required
+m                                    required
                                 />
                             </Form.Group>
                             <Form.Group controlId="description">

@@ -23,17 +23,18 @@
     padding-bottom: 15px;
 }
 
-.newRecordButten {
-    width: 150px;
+.newRecordButton {
+    width: 100%;
     background: #48306e;
     border: 1px solid white;
     color: white;
     font-weight: 500;
     font-size: 17px;
     height: 37.6px;
+    margin-bottom: 10px;
 }
 
-.newRecordButten:hover {
+.newRecordButton:hover {
     background: #fec8d8 !important;
     color: black !important;
 }
@@ -44,6 +45,25 @@
 
 @media only screen and (max-width: 768px) {
     .recordbody {
+        height: 100%;
+    }
+    .records,
+    .newReord {
+        font-size: 27px;
+    }
+    .computation h5 {
+        font-size: 14px;
+    }
+    .newRecordButton {
+        font-size: 15px;
+        width: 100%;
+        height: fit-content;
+    }
+    .description{
+        font-size: 15px !important;
+        color: darkblue;
+    }
+    .newRecordBody {
         height: 100%;
     }
 }

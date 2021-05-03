@@ -267,10 +267,8 @@ export default function Records() {
 						<h5>Current Savings: {totalBudget.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h5>
 					</div>
 				</div>
+				<Button type="submit" className={styles.newRecordButton} href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> New Record </Button>
 				<InputGroup>
-					<InputGroup.Prepend>
-						<Button type="submit" className={styles.newRecordButten} href='/records/newRecord'> <FontAwesomeIcon icon={faPlus} /> New Record </Button>
-					</InputGroup.Prepend>
 					<FormControl
 						type="text"
 						placeholder="Search Record"
@@ -282,6 +280,7 @@ export default function Records() {
 						as="select"
 						onChange={(e) => setType(e.target.value)}
 						required
+						className={styles.dropdown}
 					>
 						<option>All</option>
 						<option>Income</option>
